@@ -1,0 +1,106 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card" style="width: 500px; max-height: 600px; overflow-y: auto;">
+      <div class="card-header text-center">
+        <h4 class="mb-0">Generate QR Code</h4>
+      </div>
+      <div class="card-body p-4">  <!-- Added padding -->
+        <form (ngSubmit)="generateQrCode()" class="row g-3">
+          <div class="col-md-12">
+            <label class="form-label">Bag No:</label>
+            <input type="text" class="form-control" [(ngModel)]="batch.bagNo" name="bagNo" required />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Item:</label>
+            <input type="text" class="form-control" [(ngModel)]="batch.item" name="item" required />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Net Qty:</label>
+            <input type="number" class="form-control" [(ngModel)]="batch.netQty" name="netQty" required />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Gross Qty:</label>
+            <input type="number" class="form-control" [(ngModel)]="batch.grossQty" name="grossQty" required />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Produced On:</label>
+            <input type="date" class="form-control" [(ngModel)]="batch.producedOn" name="producedOn" required />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Seal No:</label>
+            <input type="text" class="form-control" [(ngModel)]="batch.sealNo" name="sealNo" />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Grade:</label>
+            <input type="text" class="form-control" [(ngModel)]="batch.grade" name="grade" />
+          </div>
+    
+          <div class="col-md-12">
+            <label class="form-label">Lot No:</label>
+            <input type="text" class="form-control" [(ngModel)]="batch.lotNo" name="lotNo" required />
+          </div>
+    
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Generate QR Code</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+ <!-- Display QR Code and Batch Information -->
+ <div *ngIf="qrData" class="label mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <qrcode [qrdata]="qrData"></qrcode>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Bag No.</td>
+                        <td>{{ batch.bagNo }}</td>
+                    </tr>
+                    <tr>
+                        <td>Item</td>
+                        <td>{{ batch.item }}</td>
+                    </tr>
+                    <tr>
+                        <td>Net Qty.(MT)</td>
+                        <td>{{ batch.netQty }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Qty.(MT)</td>
+                        <td>{{ batch.grossQty }}</td>
+                    </tr>
+                    <tr>
+                        <td>Produced On</td>
+                        <td>{{ batch.producedOn | date:'dd-MMM-yyyy' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Seal No.</td>
+                        <td>{{ batch.sealNo }}</td>
+                    </tr>
+                    <tr>
+                        <td>Grade</td>
+                        <td>{{ batch.grade }}</td>
+                    </tr>
+                    <tr>
+                        <td>Lot No.</td>
+                        <td>{{ batch.lotNo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+  
