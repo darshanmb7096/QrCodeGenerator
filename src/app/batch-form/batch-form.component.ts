@@ -26,7 +26,7 @@ export class BatchFormComponent {
   qrData: string = '';
 
   generateQrCode() {
-    // Create a JSON object from the batch data
+    /
     this.qrData = JSON.stringify({
         bagNo: this.batch.bagNo,
         item: this.batch.item,
